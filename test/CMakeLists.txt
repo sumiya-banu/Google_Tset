@@ -1,11 +1,16 @@
-set(This ExampleTest)
+//# Name of the test executable
+set(TestName ExampleTest)
 
+//# Source files for the test
 set(Sources 
     ExampleTest.cpp
 )
 
-add_executable(${This} ${Sources})
-target_link_libraries(${This} gtest_main Example)
+//# Create the test executable
+add_executable(${TestName} ${Sources})
 
-include(GoogleTest)
-gtest_discover_tests(${This})
+//# Link it with gtest, gtest_main, and the main Example library
+target_link_libraries(${TestName} gtest gtest_main Example)
+
+//# Register the test with CTest
+add_test(NAME ${TestName} COMMAND ${TestName})
