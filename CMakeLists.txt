@@ -15,6 +15,7 @@ set(CMAKE_CXX_STANDARD 11)
 # FetchContent_MakeAvailable(googletest)
 
 //# Use local googletest directory
+//# Use local googletest directory
 add_subdirectory(googletest)
 
 enable_testing()
