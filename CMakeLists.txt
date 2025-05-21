@@ -6,17 +6,26 @@ project(${This} C CXX)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 11)
 
-//# REMOVE FetchContent — not needed for local googletest
-# include(FetchContent)
-# FetchContent_Declare(
-#   googletest
-#   URL https://github.com/google/googletest/archive/refs/heads/main.zip
-# )
-# FetchContent_MakeAvailable(googletest)
+include(FetchContent)
 
+<<<<<<< HEAD
 //# Use local googletest directory
 //# Use local googletest directory
 add_subdirectory(googletest)
+=======
+# Check if local googletest folder exists
+if(EXISTS "${CMAKE_SOURCE_DIR}/googletest/CMakeLists.txt")
+    message(STATUS "Using local googletest folder")
+    add_subdirectory(googletest)
+else()
+    message(STATUS "Fetching googletest using FetchContent")
+    FetchContent_Declare(
+      googletest
+      URL https://github.com/google/googletest/archive/refs/heads/main.zip
+    )
+    FetchContent_MakeAvailable(googletest)
+endif()
+>>>>>>> 661b68d3ec127489ac32e7c13debc01a4ea1e748
 
 enable_testing()
 
@@ -29,5 +38,5 @@ set(Sources
 
 add_library(${This} STATIC ${Sources} ${Headers})
 
-//# Let test folder handle its own linking
+# Let test folder handle its own linking
 add_subdirectory(test)
