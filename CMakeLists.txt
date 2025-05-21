@@ -6,12 +6,16 @@ project(${This} C CXX)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 11)
 
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/refs/heads/main.zip
-)
-FetchContent_MakeAvailable(googletest)
+//# REMOVE FetchContent — not needed for local googletest
+# include(FetchContent)
+# FetchContent_Declare(
+#   googletest
+#   URL https://github.com/google/googletest/archive/refs/heads/main.zip
+# )
+# FetchContent_MakeAvailable(googletest)
+
+//# Use local googletest directory
+add_subdirectory(googletest)
 
 enable_testing()
 
@@ -24,4 +28,5 @@ set(Sources
 
 add_library(${This} STATIC ${Sources} ${Headers})
 
+//# Let test folder handle its own linking
 add_subdirectory(test)
