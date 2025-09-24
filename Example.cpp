@@ -1,8 +1,6 @@
 #include"Example.hpp"
 #include <stdio.h>
  
-
-
 int mirror_fold();
 int mirror_selection();
 int mirror_control();
