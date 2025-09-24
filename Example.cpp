@@ -118,5 +118,5 @@ int mirror_control()
     }
  
     return 0;
-}
+ }
  
